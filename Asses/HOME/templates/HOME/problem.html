@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ProblemName}}</title>
+    <style>
+        #Problemstatement {
+            border: 2px solid black;
+            height: 300px;
+            width: 100%;
+            margin: 5px;
+        }
+
+        #code {
+            border: 2px solid black;
+            height: 400px;
+            width: 50%;
+            margin: 5px;
+        }
+        #rowbox{
+            display: flex;
+            flex-direction: row;
+        }
+        #flexbox {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .iov {
+            border: 2px solid black;
+            height: 500px;
+            width: 300%;
+            margin: 5px;
+        }
+        .code-editor-box,
+    </style>
+</head>
+
+<body>
+    <h1>My_OJ</h1>
+    <h2>All the best</h2>
+    <h3>{{ProblemName}}</h3>
+        <p id="Problemstatement">
+            {{Problemstatement}}
+
+        </p>
+        {% comment %} <form action="{% url 'home:verdict' problem.id %}" method="POST" enctype="multipart/form-data"> {% endcomment %}
+        
+        {% csrf_token %}
+        <div id="rowbox">
+            <div id="flexbox">
+                <select name='language'>
+                    <option>C++</option>
+                    <option>C</option>
+                    <option>Python</option>
+                </select>
+                <div class="code-editor-box">
+                    <h2>Code Editor</h2>
+                    <textarea name='user_code' rows="20" cols="100"></textarea>
+                </div>
+            </div>
+            <div id="flexbox">
+                <h5 class="iov">Verdict
+                    <p>
+                        {% comment %} <li>code:{{Code}}</li> {% endcomment %}
+                        {% comment %} <li>lang:{{lang}}</li> {% endcomment %}
+                        {% comment %} <li>res:{{res}}</li> {% endcomment %}
+                        <li>verdict:{{verdict}}</li>
+                        {{user_stderr}}
+                        {% comment %} <li> user_stdout:{{user_stdout}}</li> {% endcomment %}
+                        {% comment %} <li>verdict:{{user_stderr}}</li> {% endcomment %}
+                    </p>
+                </h5>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+    <script>
+
+    </script>
+</body>
+</html>
