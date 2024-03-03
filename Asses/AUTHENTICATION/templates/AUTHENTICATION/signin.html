@@ -4,9 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            {% comment %} height: 100vh;  {% endcomment %}
+        }
+        #form {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+        }
+        
+        #form h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        #form label {
+            display: block;
+            margin-top: 20px;
+        }
+        
+        #form input[type="text"],
+        #form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        
+        #form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #form button[type="submit"]:hover {
+            background-color: #45a049; 
+        }
+    </style>
 </head>
 <body>
-    <form action="" method="POST">
+    <div class = 'container'>
+        <h1>SIGNIN</h1>
+    </div>
+    <form action="" method="POST" id = 'form'>
         {% csrf_token %}
         <div>
             <label for="username">Username:</label>
@@ -25,7 +83,7 @@
             <input type="text" id='email' name="email">
         </div>
         <div>
-            <input type="submit" value="Create">
+            <button type="submit">Sign In</button>
         </div>
     </form>
 </body>
