@@ -9,10 +9,10 @@ class Problem(models.Model):
     def __str__(self):
         return self.name
 class Submission(models.Model):
-    problem = models.ForeignKey(Problem,on_delete=models.CASCADE)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    user_code = models.CharField(max_length = 10000)
-    verdict = models.CharField(max_length = 100)
+    problem = models.ForeignKey(Problem,null=True,on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
+    user_code = models.CharField(max_length = 10000,default='')
+    verdict = models.CharField(max_length = 100,default='Wrong Answer')
     lang_choices = [
         ('python','python'),
         ('C','C'),
