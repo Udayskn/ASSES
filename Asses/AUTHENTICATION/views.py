@@ -15,8 +15,8 @@ def login_func(request):
             print('A login occured')
             logout(request)
             login(request,u)
-            '''CHANGE HERE IF YOU WANT TO REDIRECT TO HOME'''
-            return HttpResponse('Successfully logged in!')
+            # '''CHANGE HERE IF YOU WANT TO REDIRECT TO HOME'''
+            return redirect('HOME:home')
         else:
             print("Failed Login")
             redirect('AUTHENTICATION:login') # 'APPNAME:URLNAME'
