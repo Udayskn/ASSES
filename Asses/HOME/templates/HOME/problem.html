@@ -44,39 +44,50 @@
     <h3>{{ProblemName}}</h3>
         <p id="Problemstatement">
             {{Problemstatement}}
-
         </p>
-        {% comment %} <form action="{% url 'home:verdict' problem.id %}" method="POST" enctype="multipart/form-data"> {% endcomment %}
+        <form method="post" action = {% url 'HOME:verdict' problem.id %} enctype="multipart/form-data">
+            {% csrf_token %}  
+            {{ form.as_p }} 
+            <button type="submit">Submit</button>
+        </form>
+
+        {% comment %}
+        <p id="Problemstatement">
+            {{Problemstatement}}
+        </p>
+        <form action="{% url 'home:verdict' problem.id %}" method="POST" enctype="multipart/form-data">
         
-        {% csrf_token %}
-        <div id="rowbox">
-            <div id="flexbox">
-                <select name='language'>
-                    <option>C++</option>
-                    <option>C</option>
-                    <option>Python</option>
-                </select>
-                <div class="code-editor-box">
-                    <h2>Code Editor</h2>
-                    <textarea name='user_code' rows="20" cols="100"></textarea>
+            {% csrf_token %}
+            <div id="rowbox">
+                <div id="flexbox">
+                    <select name='language'>
+                        <option>C++</option>
+                        <option>C</option>
+                        <option>Python</option>
+                    </select>
+                    <div class="code-editor-box">
+                        <h2>Code Editor</h2>
+                        <textarea name='user_code' rows="20" cols="100"></textarea>
+                    </div>
+                </div>
+
+                
+                <div id="flexbox">
+                    <h5 class="iov">Verdict
+                        <p>
+                            <li>code:{{Code}}</li>
+                            <li>lang:{{lang}}</li>
+                            <li>res:{{res}}</li>
+                            <li>verdict:{{verdict}}</li>
+                            {{user_stderr}}
+                            <li> user_stdout:{{user_stdout}}</li>
+                            <li>verdict:{{user_stderr}}</li>
+                        </p>
+                    </h5>
+                    <button type="submit">Submit</button>
                 </div>
             </div>
-            <div id="flexbox">
-                <h5 class="iov">Verdict
-                    <p>
-                        {% comment %} <li>code:{{Code}}</li> {% endcomment %}
-                        {% comment %} <li>lang:{{lang}}</li> {% endcomment %}
-                        {% comment %} <li>res:{{res}}</li> {% endcomment %}
-                        <li>verdict:{{verdict}}</li>
-                        {{user_stderr}}
-                        {% comment %} <li> user_stdout:{{user_stdout}}</li> {% endcomment %}
-                        {% comment %} <li>verdict:{{user_stderr}}</li> {% endcomment %}
-                    </p>
-                </h5>
-                <button type="submit">Submit</button>
-            </div>
-        </div>
-    </form>
+        </form> {% endcomment %}
     <script>
 
     </script>
