@@ -27,6 +27,8 @@ def ProblemView(request, problem_id):
         'problem': problem,
         'form' : form
     }
+    print('text giving to html is :\n',context['Problemstatement'])
+
     return render(request, 'HOME\problem.html', context)
 
 def VerdictView(request,problem_id):    
@@ -161,3 +163,28 @@ def VerdictView(request,problem_id):
     #return render(request, 'home\problemverdict.html', context)
 
     return HttpResponse('verdict:{}'.format(verdict)) # for debugging purpose.
+
+
+def addProblem(request):
+    if request.method=='POST':
+        problemName,problemText = request.POST['problemName'],request.POST['problemText']
+        difficulty = request.POST['difficulty']
+        print(problemText)
+        newProblem = Problem.objects.create(name=problemName,description=problemText,diff_level=difficulty)
+        # validate testcases.
+        newProblem.save()
+
+        return redirect('HOME:home')
+    return render(request,'HOME/addProblem.html')
+
+def addTestCase(request):
+    if request.method=='POST':
+        problemName,input,output = request.POST['problemName'],request.POST['input'],request.POST['output']
+        try:
+            problem = Problem.objects.get(name=problemName) 
+            newTestCase = TestCase.objects.create(problem = problem,input=input,output=output)
+            newTestCase.save()
+            return redirect('HOME:home')
+        except:
+            return render(request,'HOME/addTestCase.html',context={'error':'The problem name given is not valid.Try again!'})
+    return render(request,'HOME/addTestCase.html')

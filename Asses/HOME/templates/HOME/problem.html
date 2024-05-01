@@ -42,9 +42,9 @@
     <h1>My_OJ</h1>
     <h2>All the best</h2>
     <h3>{{ProblemName}}</h3>
-        <p id="Problemstatement">
-            {{Problemstatement}}
-        </p>
+        <div id="Problemstatement">
+        <p >{{Problemstatement|linebreaks}}</p>
+        </div>
         <form method="post" action = {% url 'HOME:verdict' problem.id %} enctype="multipart/form-data">
             {% csrf_token %}  
             {{ form.as_p }} 

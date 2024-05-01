@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *body{
+            margin:0;
+            padding:0;
+            border:0;
+        }
+        textarea {
+            resize:none;
+        }
+        #problemName {
+            width : 25%;
+        }
+        .testCaseGrid{
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap:10px;
+        }
+        .testCaseGridItem{
+            padding:10px 10px 5px 0px;
+        }
+        #input,#output{
+            width:100%;
+        }
+        .error{
+            width:100%;
+            height:5%;
+            color:red;
+            margin:10px;
+            align-content:center;
+        }
+    </style>
+</head>
+
+<body>
+    {% if error %}
+    <h3 class='error'>{{error}}</h3>
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for='problemName'>Enter Name of The problem:</label></br>
+        <textarea id='problemName' name='problemName' rows='1'></textarea></br>
+
+        <div class='testCaseGrid'>
+            <div class='testCaseGridItem'>
+                <label for='input'>Enter input:</label></br>
+                <textarea name='input' id='input' rows='10'></textarea></br>
+            </div>
+            <div class='testCaseGridItem'>
+                <label for='output'>Enter output:</label></br>
+                <textarea name='output' id='output' rows='10'></textarea></br>
+            </div>
+        </div>
+
+        <input type='submit' name='submit'>
+    </form>
+</body>
+
+</html>

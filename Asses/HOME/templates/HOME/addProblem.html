@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            resize:none;
+        }
+        #problemName {
+            width : 50%;
+        }
+        #problemText {
+            width : 100%;
+        }
+        #testCases {
+            width : 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for='problemName'>Enter Name of The problem:</label></br>
+        <textarea id='problemName' name='problemName' rows='1'></textarea></br>
+
+        <label for='problemText'>Enter Problem Description:</label></br>
+        <textarea name='problemText' id='problemText' rows='10'></textarea></br>
+
+        <p>Select difficulty:</p>
+        <ul>
+            <li>
+                <input type='radio' name='difficulty' id='easy' value='easy'>
+                <label for='easy'>easy</label>
+            </li>
+            <li>
+                <input type='radio' name='difficulty' id='medium' value='medium'>
+                <label for='medium'>medium</label>
+            </li>
+            <li>
+                <input type='radio' name='difficulty' id='hard' value='hard'>
+                <label for='hard'>hard</label>      
+            </li>  
+        </ul>
+
+        <input type='submit' name='submit'>
+    </form>
+</body>
+
+</html>
