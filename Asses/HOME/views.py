@@ -29,7 +29,7 @@ def ProblemView(request, problem_id):
     }
     print('text giving to html is :\n',context['Problemstatement'])
 
-    return render(request, 'HOME\problem.html', context)
+    return render(request, 'HOME/problem.html', context)
 
 def VerdictView(request,problem_id):    
     if request.method == 'POST':

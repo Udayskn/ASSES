@@ -21,15 +21,17 @@
         <!--  coding contest ke baju wala circle -->
         {% comment %} Add this src to below "{%'img/vec.png'%}" {% endcomment %}
         {% comment %} <img  alt="Your Image Alt Text" class="w-12 h-10 p-0.5 bg-indigo-900 rounded-full"> {% endcomment %}
-        <strong><a style="color:black" href="http://127.0.0.1:5500/home.html" class="ml-3 text-xl">Assess</a></strong>
+        <strong><a style="color:black" href="{% url 'HOME:Home' %}" class="ml-3 text-xl">Assess</a></strong>
         <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-            <a href="http://127.0.0.1:8000/HOME" class="mr-5 hover:text-gray-900">Home</a>
+            <a href="{% url 'HOME:Home' %}" class="mr-5 hover:text-gray-900">Home</a>
             {% comment %} <a href="http://127.0.0.1:5500/AUTHENTICATION/LOGIN.html"class="mr-5 hover:text-gray-900">About</a> {% endcomment %}
-            <a href="http://127.0.0.1:8000/AUTHENTICATION/SIGNIN" class="mr-5 hover:text-gray-900">Sign up</a>
+            <a href="{% url 'AUTHENTICATION:Login' %}" class="mr-5 hover:text-gray-900">Log in</a>
             {% comment %} <a href="/help.html"class="mr-5 hover:text-gray-900">Help</a> {% endcomment %}
         </nav>
-        <button class="inline-flex items-center text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-base mt-4 md:mt-0" onclick="window.location.href='http://127.0.0.1:8000/AUTHENTICATION/LOGIN'">Log in</button>
-    </div>
+        <button class="inline-flex items-center text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-base mt-4 md:mt-0" 
+                onclick="window.location.href='{% url 'AUTHENTICATION:Login' %}'">
+                Log in</button>
+    </div>  
 </header>
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -41,7 +43,10 @@
                 {% if Problem_list %}
                 <ul>
                     {% for problem in Problem_list %}<br>
-                    <a href="{% url 'HOME:Problem' problem.id %}" class="text-blue-800 hover:underline">{{ problem.name }}</a><br>
+                    <a  href="{% url 'HOME:Problem' problem.id %}" 
+                        class="text-blue-800 hover:underline">
+                        {{ problem.name }}
+                    </a><br>
 
                     {% endfor %}
                 </ul>
@@ -52,9 +57,6 @@
                 <!-- <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
                 <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button> -->
             </div>
-        </div>
-        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-            <img class="object-cover object-center rounded" alt="hero" src="https://source.unsplash.com/720x600/?coding">
         </div>
     </div>
 </section>

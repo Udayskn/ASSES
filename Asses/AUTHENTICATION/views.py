@@ -16,10 +16,10 @@ def login_func(request):
             logout(request)
             login(request,u)
             # '''CHANGE HERE IF YOU WANT TO REDIRECT TO HOME'''
-            return redirect('HOME:home')
+            return redirect('HOME:Home')
         else:
             print("Failed Login")
-            redirect('AUTHENTICATION:login') # 'APPNAME:URLNAME'
+            redirect('AUTHENTICATION:Login') # 'APPNAME:URLNAME'
 
     return render(request,'AUTHENTICATION/login.html')
 
@@ -33,12 +33,12 @@ def signin_func(request):
                 u = User.objects.create_user(username,email,password1)
                 u.save()
                 print('User added')
-                return redirect('AUTHENTICATION:login')
+                return redirect('AUTHENTICATION:Login')
             except:
                 #modify this for better representing error
                 return HttpResponse("Username or email already exits!")
         else:
-            return redirect("AUTHENTICATION:signin")
+            return redirect("AUTHENTICATION:Signup")
 
-    return render(request,'AUTHENTICATION/signin.html')
+    return render(request,'AUTHENTICATION/signup.html')
         
